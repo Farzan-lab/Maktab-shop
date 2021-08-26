@@ -5,4 +5,5 @@ Online shop website (Final Project)
 **2- Activate your virtual environment**
 **3- Installing Django on Virtualenv**
 **4- Creating a new Django Project on Virtualenv**
-need more help?! check [it](https://hostadvice.com/how-to/how-to-create-a-virtual-environment-for-your-django-projects-using-virtualenv/) out
+need more help?! check [this website](https://hostadvice.com/how-to/how-to-create-a-virtual-environment-for-your-django-projects-using-virtualenv/).
+enjoy !!!

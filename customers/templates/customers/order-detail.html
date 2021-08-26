@@ -1,0 +1,33 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="w-75 mt-3 mx-auto">
+    <div class="card">
+        <div class="card-header">order</div>
+        <div class="card-body">
+            <div class="my-3 border p-3">
+                <h5>Address:</h5>
+                <div class="text-muted ms-4">{{ object.address.province }} - {{ object.address.city }}</div>
+                <div class="text-muted ms-4">{{ object.address.details }}</div>
+            </div>
+            <ul class="list-group">
+                {% for item in object.items.all %}
+                <li class="list-group-item d-flex align-items-center">
+                    <div class="ratio ratio-1x1 me-3" style="width: 4%;">
+                        <img src="{{ item.product.image.url }}" style="object-fit: cover;">
+                    </div>
+                    {{ item.product.title }}<span class="ms-2 text-success fw-bold">{{ item.product.get_end_price|intcomma}} $</span>
+                    <div class="ms-auto d-flex align-items-center">
+                        Count: <span class="text-muted mx-2">{{ item.count }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            <div class="my-3 ps-3">
+                Total Price: <span class="text-success fw-bold">{{ object.total_price|intcomma }} $</span> <span class="ms-5">Status: <span class="text-muted">{{ object.get_status_display }}</span></span>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

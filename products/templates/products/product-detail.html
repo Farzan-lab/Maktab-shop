@@ -1,0 +1,41 @@
+{% extends 'core/base.html' %}
+{% load humanize %}
+{% block content %}
+<div class="card w-75 mx-auto mt-4">
+    <div class="card-header">
+        Product
+    </div>
+    <div class="card-body">
+        <div class="row mx-3 my-3">
+            
+            <div class="col">
+                <div class="h-100 mx-5" style="display: flex; flex-direction:column;">
+                    <h5 class="card-title mb-4">{{ object.title }}</h5>
+                    <div class="border-bottom border-top mb-2 py-1">
+                        <div class="text-center">Categories</div>
+                        {% for cat in object.category.get_parents %}
+                            <span class="text-muted">{{ cat }} {% if not forloop.last %}>{% endif %}</span>
+                        {% endfor %}
+                    </div>
+                    <div>Price:</div>
+                    <div class="text-muted ms-2 text-decoration-line-through">{{ object.price|intcomma }}$</div>
+                    <div class="text-success ms-2 mb-2">{{ object.get_end_price|intcomma }}$</div>
+                    <div class="mb-4">Brand : {{ object.brand }}</div>
+                    <div class="text-muted mb-4">{{ object.available }} items available</div>
+                    
+                </div>
+                
+            </div>
+            <div class="col-3 text-center">
+                <div  class="ratio ratio-1x1">
+                    <img src="{{ object.image.url }}" class="card-img-top" style="object-fit: cover;">
+                </div>
+            </div>
+        </div>
+        <h4 class="mx-4">Description:</h4>
+        <div class="mx-4 border px-4 pb-4" style="white-space:pre-line;">
+            {{ object.description }}
+        </div>
+    </div>
+</div>
+{% endblock %}
